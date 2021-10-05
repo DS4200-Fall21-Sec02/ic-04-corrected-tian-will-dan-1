@@ -1,7 +1,7 @@
 # D3-more-practice
 This repository is your starting point for ic-04. Assignment details and instructions are below. 
 
-Link to your GitHub pages website: `[insert your *clickable* hyperlink here]`
+Link to your GitHub pages website: [here](https://ds4200-fall21-sec02.github.io/ic-04-corrected-tian-will-dan-1/)
 
 # Aim of the assignment
 
