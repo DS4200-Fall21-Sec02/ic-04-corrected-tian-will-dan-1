@@ -1,6 +1,5 @@
 // write your javascript code here.
 // feel free to change the pre-set attributes as you see fit
-
 let margin = {
     top: 60,
     left: 50,
@@ -30,12 +29,14 @@ let svg1 = d3
 
 var svg = d3.select('svg');
 
+// Set size of the X & Y axis of the graph on the page
 var xScale = d3.scaleBand().range([0, width]).padding(0.4),
   yScale = d3.scaleLinear().range([height, 0]);
 
 var g = svg.append('g').attr('transform', 'translate(' + 50 + ',' + 50 + ')');
+
 var Tooltip;
-// Three function that change the tooltip when user hover / move / leave a cell
+// Three functions that change the tooltip when user hover / move / leave a cell
 var mouseover = function (d) {
   // create a tooltip
   Tooltip = d3
@@ -63,7 +64,9 @@ var mouseleave = function (d) {
   d3.select(this).style('stroke', 'none').style('opacity', 1);
 };
 
+// Load in the data using d3.csv method
 d3.csv('./data/data.csv').then(function (data) {
+  // Set the X & Y axis and their corresponding labels
   xScale.domain(
     data.map(function (d) {
       return d.X;
@@ -76,6 +79,7 @@ d3.csv('./data/data.csv').then(function (data) {
     }),
   ]);
 
+  // Append the X & Y axis to the graph
   g.append('g')
     .attr('transform', 'translate(0,' + height + ')')
     .call(d3.axisBottom(xScale));
@@ -95,6 +99,7 @@ d3.csv('./data/data.csv').then(function (data) {
     .attr('text-anchor', 'end')
     .text('value');
 
+  // Style the bars, set their size to correspond with the data, and add hover functionality to enable the tooltip
   g.selectAll('.bar')
     .data(data)
     .enter()
